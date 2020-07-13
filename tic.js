@@ -2,44 +2,45 @@
 
 
 var shift= 1;
-var play = true;
+var play = true;  
 
 
 
-$('table tr td').click(function(){
+$('table tr td').click(function(){ 
   if($(this).text()==="" && play){
      if(shift%2===1){
-      $(this).append("X");
-      $(this).css('color','#61892f');
+      $(this).append("X");  //append select an element on the page and insert it into another.. (select X)
+      $(this).css('color','#61892f');   // the color of X
      } else {
-      $(this).append("O");
-      $(this).css('color','#e85a4f');
+      $(this).append("O");  //append select an element on the page and insert it into another.. (select O)
+      $(this).css('color','#e85a4f'); // the color of O ..
      }
       shift++;
+
       if(findWinner() !== -1 && findWinner()!==""){
         if(findWinner()==="X"){
-            $('body').append('<div class="winner"><span>Winner</span>X</div>');
-            $('body').append('<button onclick="location.reload()">Play Again</button>');
-            $('.winner').css('background-color', '#61892f');
+            $('body').append('<div class="winner"><span>Winner</span>X</div>'); //button express the  winner X
+            $('body').append('<button onclick="location.reload()">Play Again</button>'); //button to replay
+            $('.winner').css('background-color', '#61892f'); //button X color
             $('button').css('color', '#61892f');
 
         } else {
-             $('body').append('<div class="winner"><span>Winner</span>O</div>');
-            $('body').append('<button onclick="location.reload()">Play Again</button>');
-            $('.winner').css('background-color', '#e85a4f');
-            $('button').css('color', '#e85a4f');
+             $('body').append('<div class="winner"><span>Winner</span>O</div>');            //button express the winner O
+            $('body').append('<button onclick="location.reload()">Play Again</button>');   //button to replay
+            $('.winner').css('background-color', '#e85a4f'); // button O color 
+            $('button').css('color', '#e85a4f');  
 
 
 
         }
-        play = false;
+         play = false;
       }
   }
 });
 
 
 
-function findWinner(){
+function findWinner(){      //select all elements that are the nth-child of their parent..
 sa1= $('table tr:nth-child(1) td:nth-child(1)').text();
 sa2= $('table tr:nth-child(1) td:nth-child(2)').text();
 sa3= $('table tr:nth-child(1) td:nth-child(3)').text();
@@ -75,12 +76,21 @@ else if ((sa1===sa5) && (sa5===sa9)){
 } else if ((sa3===sa5) && (sa5===sa7)){
     return sa7;
 }
+ 
+
+alert("no win")
+
+}
+
+
 
 
 // no winners 
-return -1;
 
-}
+
+
+
+
 
 
 
